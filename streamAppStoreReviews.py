@@ -42,9 +42,6 @@ def getReviewsFromAPI(app_name, country: str = "us", how_many: int = 200) -> pd.
         
         df = df.sort_values(by='date')
         
-        # Importing data
-        data_load_state = st.text('Loading data...')
-        # Importing data
         return df
         pprint("Reviews scraped successfully.")
     except Exception as e:
@@ -60,6 +57,10 @@ appName = st.sidebar.text_input('Enter the app name:', 'minecraft')
 howMany = st.sidebar.text_input('How many reviews you want to scrape:', '200')
 countryCodes = getCountryCodes()
 country = st.sidebar.selectbox('Choose a country please: ', countryCodes)
+
+# Importing data
+data_load_state = st.text('Loading data...')
+# Importing data
 
 reviewDf = getReviewsFromAPI(str(appName), country="us", how_many=int(howMany))
 
