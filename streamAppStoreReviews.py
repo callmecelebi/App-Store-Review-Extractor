@@ -22,7 +22,7 @@ def getCountryCodes(path:str = 'data/country_codes.csv') -> set:
     try:
         df = pd.read_csv(path)
         l = list(df['Code'].str.lower())
-        l.remove('nan')
+        print(l)
         return l
     except Exception as e:
         print(e)
