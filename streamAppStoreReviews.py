@@ -72,6 +72,8 @@ data_load_state.text('Loading data...done!')
 st.subheader('Raw data')
 rows = st.sidebar.text_input('How many rows you want to show in this page? (Automatically sorted by date)', '10')
 
+st.write(reviewDf.shape)
+
 st.write(reviewDf.head(int(rows)))
 
 st.subheader('Rating Distribution')
