@@ -21,7 +21,9 @@ data_load_state = st.text('Waiting for instructions...')
 def getCountryCodes(path:str = 'data/country_codes.csv') -> set:
     try:
         df = pd.read_csv(path)
-        return set(df['Code'].unique())
+        l = list(df['Code'].str.lower())
+        l.remove('nan')
+        return l
     except Exception as e:
         print(e)
         print("Error: Could not read data")
@@ -56,13 +58,13 @@ def convert_df(df):
 appName = st.sidebar.text_input('Enter the app name:', 'minecraft')
 howMany = st.sidebar.text_input('How many reviews you want to scrape:', '200')
 countryCodes = getCountryCodes()
-country = st.sidebar.selectbox('Choose a country please: ', countryCodes)
+country = st.sidebar.selectbox('Choose a country please: ', sorted(countryCodes))
 
 # Importing data
 data_load_state = st.text('Loading data...')
 # Importing data
 
-reviewDf = getReviewsFromAPI(str(appName), country="us", how_many=int(howMany))
+reviewDf = getReviewsFromAPI(str(appName), country=country, how_many=int(howMany))
 
 data_load_state.text('Loading data...done!')
 
