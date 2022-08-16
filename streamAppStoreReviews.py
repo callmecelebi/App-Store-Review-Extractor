@@ -42,7 +42,7 @@ def getReviewsFromAPI(app_name, country: str = "us", how_many: int = 200) -> pd.
         # print(df.head(15))
         # pprint(appReviews.reviews_count)
         
-        df = df.sort_values(by='date')
+        df = df.sort_values(by='date').reset_index(drop=True)
         
         return df
         pprint("Reviews scraped successfully.")
