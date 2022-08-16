@@ -5,11 +5,7 @@ from datetime import datetime
 from app_store_scraper import AppStore
 from pprint import pprint
 import plotly.express as px
-    
-import asyncio
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-    
+        
 st.set_page_config(
     page_title="AppStore Reviews", 
     page_icon="✍🏼",
