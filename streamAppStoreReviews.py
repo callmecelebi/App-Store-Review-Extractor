@@ -74,9 +74,13 @@ rows = st.sidebar.text_input('How many rows you want to show in this page? (Auto
 st.write(reviewDf.head(int(rows)))
 csv = convert_df(reviewDf)
 
+st.write('You can download the raw data as a CSV file..')
+
+"""
 st.download_button(
      label="Download data as CSV",
      data=csv,
-     file_name='large_df.csv',
+     file_name='reviews_df.csv',
      mime='text/csv',  )
+"""
 
