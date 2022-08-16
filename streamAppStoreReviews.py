@@ -70,7 +70,6 @@ st.subheader('Raw data')
 rows = st.sidebar.text_input('How many rows you want to show in this page? (Automatically sorted by date)', '10')
 
 st.write(reviewDf.head(int(rows)))
-
 csv = convert_df(reviewDf)
 
 st.download_button(
