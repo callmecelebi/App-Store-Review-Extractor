@@ -30,10 +30,10 @@ def getCountryCodes(path:str = 'data/country_codes.csv') -> set:
         print("Error: Could not read data")
     
 @st.cache
-def getReviewsFromAPI(app_name, country: str = "us", how_many: int = 200) -> pd.DataFrame:
+def getReviewsFromAPI(app_name, country: str = "us") -> pd.DataFrame: # , how_many: int = 200
     try:
         appReviews = AppStore(country=country, app_name=app_name)
-        appReviews.review(how_many=how_many)
+        appReviews.review() # how_many=how_many
 
         pprint(appReviews.reviews)
         df = pd.DataFrame.from_dict(appReviews.reviews)
@@ -57,7 +57,7 @@ def convert_df(df):
      return df.to_csv().encode('utf-8')
 
 appName = st.sidebar.text_input('Enter the app name:', 'minecraft')
-howMany = st.sidebar.text_input('How many reviews you want to scrape:', '200')
+# howMany = st.sidebar.text_input('How many reviews you want to scrape:', '200')
 countryCodes = getCountryCodes()
 country = st.sidebar.selectbox('Choose a country please: ', countryCodes, index= 235)
 
@@ -65,7 +65,7 @@ country = st.sidebar.selectbox('Choose a country please: ', countryCodes, index=
 data_load_state = st.text('Loading data...')
 # Importing data
 
-reviewDf = getReviewsFromAPI(str(appName), country=country, how_many=int(howMany))
+reviewDf = getReviewsFromAPI(str(appName), country=country) # , how_many=int(howMany)
 
 data_load_state.text('Loading data...done!')
 
