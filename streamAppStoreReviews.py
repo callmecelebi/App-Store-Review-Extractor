@@ -65,7 +65,7 @@ country = st.sidebar.selectbox('Choose a country please: ', countryCodes, index=
 data_load_state = st.text('Loading data...')
 # Importing data
 
-reviewDf = getReviewsFromAPI(str(appName), country=country) # , how_many=int(howMany)
+reviewDf = getReviewsFromAPI(str(appName), country=country, how_many=int(howMany)) 
 
 data_load_state.text('Loading data...done!')
 
