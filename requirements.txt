@@ -1,0 +1,2 @@
+plotly==5.10.0
+app-store-scraper==0.3.5
