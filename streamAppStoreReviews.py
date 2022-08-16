@@ -86,4 +86,8 @@ st.write('You can download the raw data as a CSV file..')
 
 csv = convert_df(reviewDf)
 
-
+st.download_button(
+     label="Download data as CSV",
+     data=csv,
+     file_name='reviews_df.csv',
+     mime='text/csv')
