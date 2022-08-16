@@ -4,6 +4,7 @@ import numpy as np
 from datetime import datetime
 from app_store_scraper import AppStore
 from pprint import pprint
+import plotly.express as px
     
 st.set_page_config(
     page_title="AppStore Reviews", 
@@ -72,8 +73,14 @@ st.subheader('Raw data')
 rows = st.sidebar.text_input('How many rows you want to show in this page? (Automatically sorted by date)', '10')
 
 st.write(reviewDf.head(int(rows)))
-csv = convert_df(reviewDf)
+
+fig = px.bar(reviewDf['rating'], x="Rating", y="Count", color="medal", title="Rating Distribution")
+fig.show()
+
+st.plotly_chart(fig, use_container_width=True)
 
 st.write('You can download the raw data as a CSV file..')
+
+csv = convert_df(reviewDf)
 
 
