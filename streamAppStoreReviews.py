@@ -58,7 +58,7 @@ def convert_df(df):
 appName = st.sidebar.text_input('Enter the app name:', 'minecraft')
 howMany = st.sidebar.text_input('How many reviews you want to scrape:', '200')
 countryCodes = getCountryCodes()
-country = st.sidebar.selectbox('Choose a country please: ', sorted(countryCodes))
+country = st.sidebar.selectbox('Choose a country please: ', countryCodes)
 
 # Importing data
 data_load_state = st.text('Loading data...')
