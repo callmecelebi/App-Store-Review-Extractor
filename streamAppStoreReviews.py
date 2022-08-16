@@ -74,7 +74,8 @@ rows = st.sidebar.text_input('How many rows you want to show in this page? (Auto
 
 st.write(reviewDf.head(int(rows)))
 
-fig = px.bar(reviewDf['rating'], x="Rating", y="Count", color="medal", title="Rating Distribution")
+st.subheader('Rating Distribution')
+fig = px.histogram(reviewDf, x="rating")
 fig.show()
 
 st.plotly_chart(fig, use_container_width=True)
